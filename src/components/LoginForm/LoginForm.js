@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import './styles.scss';
 
 export const LoginForm = () => {
   const [login, setLogin] = useState('');
@@ -6,7 +7,7 @@ export const LoginForm = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
 
-  const handleChangeEmail = (event) => {
+  const handleChangeLogin = (event) => {
     const { value } = event.target;
 
     setLogin(value)
@@ -46,33 +47,38 @@ export const LoginForm = () => {
     onSubmit={handleSubmit}
     className="form"
     >
-      <input
-        type="email"
-        value={login}
-        onChange={handleChangeEmail}
-        placeholder="Login"
-        className="form__input"
-      >
-      </input>
-      {isLogin && (
-          <p>Please enter the Email</p>
-        )}
-      <input
-        value={password}
-        onChange={handleChangePass}
-        placeholder="Password"
-        className="form__input"
-      >
-      </input>
-      {isPassword && (
-          <p>Please enter the Password</p>
-        )}
-      <button
-        type="submit"
-        className="form__button"
-      >
-        Login
-      </button>
+      <h2 className="form__title">Login form</h2>
+
+      <label className="form__label">
+        <input
+          type="text"
+          value={login}
+          onChange={handleChangeLogin}
+          placeholder="Login"
+          className="form__input"
+        >
+        </input>
+        {isLogin && (
+            <p className="form__error">Please enter the Login</p>
+          )}
+        <input
+          type="password"
+          value={password}
+          onChange={handleChangePass}
+          placeholder="Password"
+          className="form__input"
+        >
+        </input>
+        {isPassword && (
+            <p className="form__error">Please enter the Password</p>
+          )}
+        <button
+          type="submit"
+          className="form__button"
+        >
+          Log in
+        </button>
+      </label>
     </form>
   )
 }
